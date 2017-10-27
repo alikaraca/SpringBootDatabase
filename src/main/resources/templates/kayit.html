@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Kayıt Sayfası</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/kayit.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<form th:action="@{/giris}" method="get">
+		<button class="btn btn-md btn-primary btn-block" type="Submit">Giriş
+			Sayfasına Git</button>
+	</form>
+	<div class="container">
+		<img th:src="@{/resimler/kayıt.png}"
+			class="img-responsive center-block" width="200" height="200"
+			alt="Logo" />
+		<div class="col-sm-offset-2 col-sm-10">
+			<form autocomplete="off" th:action="@{/kayit}" th:object="${user}"
+				method="post" class="form-horizontal" role="form">
+				<h2>Kayıt Formu</h2>
+				<div class="form-group">
+					<div class="col-sm-9">
+						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+							class="validation-message"></label> <input type="text"
+							th:field="*{name}" placeholder="Ad" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9">
+						<label th:if="${#fields.hasErrors('last_name')}"
+							th:errors="*{lastName}" class="validation-message"></label> <input
+							type="text" th:field="*{last_name}" placeholder="Soyad"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9">
+						<input type="text" th:field="*{email}" placeholder="Email"
+							class="form-control" /> <label
+							th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+							class="validation-message"></label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-9">
+						<input type="password" th:field="*{password}" placeholder="Parola"
+							class="form-control" /> <label
+							th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+							class="validation-message"></label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-9">
+						<button type="submit" class="btn btn-lg btn-primary btn-block">Kullanıcı
+							Kayıt</button>
+					</div>
+				</div>
+
+				<span th:utext="${KayitMesaji}"></span>
+
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>
